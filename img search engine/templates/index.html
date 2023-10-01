@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image search engine</title>
+    <link rel="stylesheet" href="/static/CSS/style.css">
+    <script src="/static/CSS/JS/js.js"></script>
+</head>
+<body>
+    <center><h1>Image Search engine</h1></center>
+    <div class="search_bar">
+        <form method="POST">
+            <input type="text" name="query">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% if data != [] %}
+    <div class="img">
+        {% for i in data %}
+        <div class="container">
+            <a href={{i[3]}} target="_blank" class="bulge-link">
+                <img src={{i[0]}} alt="Image not found">
+            </a>
+            <b>
+                <p style="color: red;">&#128151; {{i[1]}}</p>
+                <p>{{i[2]}}</p>
+            </b>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>
