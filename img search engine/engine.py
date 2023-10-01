@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import requests
-from spellchecker import SpellChecker
-import pandas as pd
+from spellchecker import SpellChecker
 app = Flask(__name__)
 spell=SpellChecker()
 client_id = "Your API KEY"
@@ -34,7 +33,7 @@ def img_search_engine():
             
     else:
         query='Please Enter a KeyWOrd to Search Images'
-    print(pd.DataFrame(result))
+
     
     return render_template("index.html", data=result,query=query)
 
