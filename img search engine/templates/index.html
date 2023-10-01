@@ -16,13 +16,13 @@
         </form>
     </div>
 
-    {% if data != [] %}
-     <center><p style="color: blue;">Displaying results For {{query}}</p></center>
+    {% if data %}
+    <center><p style="color: blue;">Displaying results For {{query}}</p></center>
     <div class="img">
         {% for i in data %}
         <div class="container">
             <a href={{i[3]}} target="_blank" class="bulge-link">
-                <img src={{i[0]}} alt="Image not found">
+                <img src={{i[0]}} alt="Sorry!!  Image not found">
             </a>
             <b>
                 <p style="color: red;">&#128151; {{i[1]}}</p>
@@ -31,8 +31,8 @@
         </div>
         {% endfor %}
     </div>
-      {% else %}
-    <center><p style="color: red; font-size: xx-large;"><b>Sorry!!! No image found &#128533</b></p></center> 
+    {% else %}
+    <center><p style="color: red; font-size: xx-large;"><b>Please Search for an Image to Continue &#128512</b></p></center> 
     {% endif %}
 </body>
 </html>
