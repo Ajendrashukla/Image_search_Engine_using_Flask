@@ -17,6 +17,7 @@
     </div>
 
     {% if data != [] %}
+     <center><p style="color: blue;">Displaying results For {{query}}</p></center>
     <div class="img">
         {% for i in data %}
         <div class="container">
@@ -30,6 +31,8 @@
         </div>
         {% endfor %}
     </div>
+      {% else %}
+    <center><p style="color: red; font-size: xx-large;"><b>Sorry!!! No image found &#128533</b></p></center> 
     {% endif %}
 </body>
 </html>
