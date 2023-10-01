@@ -1,12 +1,9 @@
 from flask import Flask, render_template, request
 import requests
 from spellchecker import SpellChecker
-
-spell=SpellChecker()
-
 app = Flask(__name__)
-
-client_id = "Your API KEY Here"
+spell=SpellChecker()
+client_id = "BQJAUDaE0LOyzqw2U34XRCBJXkkhi1OfpJy6Uh4awCQ"
 
 @app.route('/', methods=['GET', 'POST'])
 def img_search_engine():
@@ -14,13 +11,16 @@ def img_search_engine():
     result=[]
     if request.method == 'POST':
         query = request.form['query']
-        query=spell.correction(query)
+        t=query.split()
+        query=""
+        for word in t:
+            word= spell.correction(word)
+            query=query+str(word)+" "
+
         url = f"https://api.unsplash.com/search/photos?page=all&query={query}&client_id={client_id}"
         response = requests.get(url)
         response = response.json()
         if int(response['total_pages'])>=10:
-
-    
             response= response["results"]
             for i in range(9):
                 temp= response[i]
@@ -31,6 +31,8 @@ def img_search_engine():
                 l.append(temp["urls"]["raw"])
                 result.append(l)
             result=sorted(result,key=lambda x:x[1],reverse=True)
+    else:
+        query='Please Enter a KeyWOrd to Search Images'
 
     
     return render_template("index.html", data=result,query=query)
