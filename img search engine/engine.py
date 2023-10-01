@@ -3,7 +3,7 @@ import requests
 from spellchecker import SpellChecker
 app = Flask(__name__)
 spell=SpellChecker()
-client_id = "BQJAUDaE0LOyzqw2U34XRCBJXkkhi1OfpJy6Uh4awCQ"
+client_id = "Your Unsplash API key"
 
 @app.route('/', methods=['GET', 'POST'])
 def img_search_engine():
